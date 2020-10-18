@@ -1,18 +1,38 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="page-home">
+    <!-- banner图 -->
+    <Banner />
+    <!-- 热门推荐 -->
+    <Hot />
+    <!-- 精选景点 -->
+    <Fine />
+    <!-- 底部导航 -->
+    <trip-footer/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+// import HelloWorld from '@/components/HelloWorld.vue'
+// import {ajax} from '@/utils/ajax'
+import Banner from "@/components/home/Banner";
+import Hot from "@/components/home/Hot";
+import Fine from "@/components/home/Fine";
+import TripFooter from '@/components/common/footer'
 
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
-    HelloWorld
-  }
-}
+    // banner图
+    Banner,
+    // 热门推荐
+    Hot,
+    // 精选景点
+    Fine,
+    //底部导航
+    TripFooter,
+  },
+};
 </script>
+
+

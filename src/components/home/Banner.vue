@@ -4,7 +4,7 @@
     <!-- 轮播图组件：来自vant -->
     <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
       <van-swipe-item v-for="item in bannerList" :key="item.id"
-        ><img :src="item.img" alt=""
+        ><img :src="item.img_url" alt=""
       /></van-swipe-item>
     </van-swipe>
   </div>
@@ -12,6 +12,10 @@
 
 
 <script>
+// 解构赋值，只要ajax这个异步实例
+import {ajax} from '@/utils/ajax'
+import {SystemApis} from '@/utils/apis'
+
 export default {
   data() {
     return {
@@ -19,13 +23,17 @@ export default {
       bannerList: [],
     };
   },
-  methods: {},
+  methods: {
+    getDataList(){
+      ajax.get(SystemApis.sliderListUrl).then(res=>{
+        console.log('res:',res)
+        this.bannerList=res.data.objects
+      })
+    }
+
+  },
   created() {
-    this.bannerList = [
-      { id: 1, img: "/static/home/banner/banner1.jpg" },
-      { id: 2, img: "/static/home/banner/banner2.jpg" },
-      { id: 3, img: "/static/home/banner/banner3.jpg" },
-    ];
+    this.getDataList()
   },
 };
 </script>

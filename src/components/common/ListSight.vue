@@ -1,24 +1,32 @@
 <template>
-  <a href="#" class="sight-item" >
+  <!-- 点击此页面，跳转到景点详情页面 -->
+  <router-link
+    class="sight-item"
+    :to="{
+      name: 'SightDetail',
+      params: {
+        id: item.id      },
+    }"
+  >
     <!-- 左边布局 -->
-    <img src="/static/home/hot/h1.jpg" alt="" />
+    <img :src="item.main_img" :alt="item.name" />
     <!-- //左边布局 -->
     <!-- 右边布局 -->
     <div class="right">
       <h5>{{ item.name }}</h5>
       <van-rate v-model="item.score" readonly />
-      <div class="tips">4人点评｜100%满意</div>
-      <div class="tips light">广东省-广州市</div>
-      <div class="line-price">¥{{ item.price }}元起</div>
+      <div class="tips">{{ item.comment_count }}人点评｜100%满意</div>
+      <div class="tips light">{{ item.province }}-{{ item.city }}</div>
+      <div class="line-price">¥{{ item.min_price }}元起</div>
     </div>
     <!-- //右边布局 -->
-  </a>
+  </router-link>
 </template>
 
 <script>
 export default {
-	props:['item']
-}
+  props: ["item"],
+};
 </script>
 
 

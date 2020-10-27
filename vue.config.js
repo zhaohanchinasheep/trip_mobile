@@ -2,10 +2,10 @@ module.exports = {
 	devServer: {
 		proxy: {
 			'/api': {
-				target: 'http://django.t.mukewang.com',
+				target: 'http://127.0.0.1:9527',
 				changeOrigin: true,
 				pathRewrite: {
-					// '^/api': ''
+					'^/api': ''
 					//需要重写的url
 				}
 			},
